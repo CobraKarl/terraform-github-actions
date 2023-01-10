@@ -10,7 +10,7 @@ terraform {
     resource_group_name  = "mkk15"
     storage_account_name = "storageforstate0822"
     container_name       = "tfstate"
-    key                  = "terraform.tfstate"
+    key                  = "tfstate.tfstate"
 
   }
 }

@@ -13,8 +13,15 @@ az storage container create --name tfstate --account-name $STOREAGEACCOUNTNAME
 
 
 # Create Service Principal 
-az ad sp create-for-rbac --name spforgithub
+subscriptionId=$(az account show --query id --output tsv)
+az ad sp create-for-rbac --role contributor --scopes /subscriptions/$subscriptionId
 
+
+
+# appId = clientId
+# password = clientSecret
+# tenant = tenantId
+# subscriptionId = az account show --query id --output tsv
 # ADD the 4 secrets in Github actions: 
 # AZURE_AD_CLIENT_ID – Will be the service principal ID from above
 # AZURE_AD_CLIENT_SECRET – The secret that was created as part of the Azure Service Principal
